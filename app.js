@@ -6,7 +6,7 @@ const render = (root) => {
 }
 
 const state = {
-    puntaje: null,
+    puntaje: 0,
     imag: null,
     page: 0
 };
@@ -29,5 +29,5 @@ $(_ => {
       root.empty();
       root.append(Puntaje());
       // state.page=1;
-    }, 5000);
+    }, 6000);
 });
