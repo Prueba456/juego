@@ -29,5 +29,5 @@ $(_ => {
     setTimeout(function(){
       root.empty();
       root.append(Puntaje());
-    }, 6000000);
+    }, 7000);
 });
