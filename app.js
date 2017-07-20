@@ -29,5 +29,5 @@ $(_ => {
       root.empty();
       root.append(Puntaje());
       // state.page=1;
-    }, 3000);
+    }, 5000);
 });
