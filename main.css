@@ -10,9 +10,25 @@ img{
 .contenedor{
   position: absolute;
 }
+.cont-form{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  width: 100px;
+}
+.margin-bottom{
+  margin-bottom: 20px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .rand {
-  /*word-wrap:break-word;
-  white-space: pre-wrap;*/
   width: 60px;
   height: 60px;
   text-align: center;
