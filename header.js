@@ -1,4 +1,3 @@
-
 const Registro = (update) =>{
   const formulario = $('<div class="cont-form"></div>');
   const form = $('<div class="form"></div>');
