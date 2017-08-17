@@ -24,17 +24,47 @@ const Registro = (update) =>{
     console.log(inputnombre);
     const inputemail = email.val();
     //Agregamos un dato nuevo en la base de datos
-		tempRef.push().set({
-			//generamos un valor aleatorio
-			nombre: inputnombre,
-			//generamos un timestamp
-			email: inputemail
-		});
+
+		// tempRef.push().set({
+		// 	//generamos un valor aleatorio
+		// 	nombre: inputnombre,
+		// 	//generamos un timestamp
+		// 	email: inputemail
+		// });
+
     update();
   });
 
   return formulario;
 };
+
+function aparecer (objeto ){
+  objeto.css('display','inline-block');
+}
+function oculto (objeto){
+  objeto.css('display','none');
+}
+function ubicacion(objeto){
+  var bodyWidth = document.body.clientWidth
+  var bodyHeight = document.body.clientHeight;
+  const randPosX = Math.floor((Math.random()*(bodyWidth-90)));
+  const randPosY = Math.floor((Math.random()*(bodyHeight-90)));
+  objeto.css('left', randPosX);
+  objeto.css('top', randPosY);
+}
+function contador(obj) {
+    var t = 0;
+    var x = setInterval( function() {
+      t++;
+      aparecer(obj);
+      if(t==1){
+        ubicacion(obj);
+      }
+      if(t==9) {
+      t = 0;
+      };
+    },100);
+}
 
 const Header = () =>{
   const contenedor = $('<div class="contenedor"></div>');
@@ -44,25 +74,19 @@ const Header = () =>{
   divImagen.append(imagen);
 
   $(_ => {
-
-      var cont = 0;
-      $('#rand_pos').click(function() {
-        var bodyWidth = document.body.clientWidth
-        var bodyHeight = document.body.clientHeight;
-        const randPosX = Math.floor((Math.random()*(bodyWidth-90)));
-        const randPosY = Math.floor((Math.random()*(bodyHeight-90)));
-        $('#rand_pos').css('left', randPosX);
-        $('#rand_pos').css('top', randPosY);
+contador(divImagen);
+  var cont = 0;
+ $('#rand_pos').click(function() {
         cont = cont +1;
         state.puntaje=cont;
         console.log(cont);
-      });
+ });
       setTimeout(function(){
         const root = $('#root');
         root.empty();
         root.append(Puntaje());
-      }, 7000);
-  });
+      }, 10000);
+      });
   return contenedor;
 };
 
