@@ -60,10 +60,10 @@ function contador(obj) {
       if(t==1){
         ubicacion(obj);
       }
-      if(t==9) {
+      if(t==20) {
       t = 0;
       };
-    },100);
+    },10);
 }
 
 const Header = () =>{
