@@ -15,6 +15,7 @@ const state = {
     imag: null,
     user:null,
     email:null,
+    imagen:null,
 };
 
 $(_ => {

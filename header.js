@@ -3,8 +3,8 @@ const Registro = (update) =>{
   const form = $('<div class="form"></div>');
   const divLogo = $('<div class="logo margin-bottom"></div>');
   const logo = $('<img src="img/hplogo.png">');
-  const nombre = $('<input ip="nombre" class="margin-bottom" type="text" placeholder="Nombre" name="" value="">');
-  const email = $('<input ip="email" class="margin-bottom" type="text" placeholder="Email" name="" value="">');
+  const nombre = $('<input id="nombre" class="margin-bottom" type="text" placeholder="Nombre" name="" value="">');
+  const email = $('<input id="email" class="margin-bottom" type="text" placeholder="Email" name="" value="">');
   const jugarEnviar = $('<button id="btn" class="jugar" type="button" name="button">Jugar</button>');
   formulario.append(form);
   form.append(divLogo, nombre, email, jugarEnviar);
@@ -13,7 +13,6 @@ const Registro = (update) =>{
   //Accedemos a nuestra base de datos mediante la URL de tu app
  var ref = new Firebase("https://juego-2ede8.firebaseio.com");
  //Hacemos referencia a nuestro nodo del sensor Temp
- // var tempRef = ref.child("Temp");
  var tempRef = ref.child("person");
 
 
@@ -38,7 +37,7 @@ const Registro = (update) =>{
   return formulario;
 };
 
-function aparecer (objeto ){
+function aparecer (objeto){
   objeto.css('display','inline-block');
 }
 function oculto (objeto){
@@ -52,29 +51,32 @@ function ubicacion(objeto){
   objeto.css('left', randPosX);
   objeto.css('top', randPosY);
 }
-function contador(obj) {
+function contador(obj, img1) {
+  var imagenes = ["carro-nube.png", "edificio-nube.png"];
+
     var t = 0;
     var x = setInterval( function() {
       t++;
-      aparecer(obj);
       if(t==1){
+        aparecer(obj);
+        obj.children().attr("src", "img/"+imagenes[Math.floor(Math.random() * imagenes.length)]);
         ubicacion(obj);
       }
-      if(t==20) {
+      if(t==15) {
       t = 0;
       };
-    },10);
+    },80);
 }
 
 const Header = () =>{
   const contenedor = $('<div class="contenedor"></div>');
   const divImagen = $('<div id="rand_pos" class="rand"></div>');
-  const imagen = $('<img src="img/conejo.png">');
+  const imagen = $('<img src="img/carro-nube.png">');
   contenedor.append(divImagen);
   divImagen.append(imagen);
-
+// console.log(state.imagen);
   $(_ => {
-contador(divImagen);
+contador(divImagen, imagen);
   var cont = 0;
  $('#rand_pos').click(function() {
         cont = cont +1;
