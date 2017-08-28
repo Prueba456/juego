@@ -1,14 +1,18 @@
 const Registro = (update) =>{
   const formulario = $('<div class="cont-form"></div>');
+  const divLogo1 = $('<div class="logo-form"></div>');
+  const logo1 = $('<img src="img/logo.png">');
+
   const form = $('<div class="form"></div>');
   const divLogo = $('<div class="logo margin-bottom"></div>');
-  const logo = $('<img src="img/hplogo.png">');
+  const logo = $('<img src="img/titulo.png">');
   const nombre = $('<input id="nombre" class="margin-bottom" type="text" placeholder="Nombre" name="" value="">');
   const email = $('<input id="email" class="margin-bottom" type="text" placeholder="Email" name="" value="">');
   const jugarEnviar = $('<button id="btn" class="jugar" type="button" name="button">Jugar</button>');
-  formulario.append(form);
+  formulario.append(divLogo1, form);
   form.append(divLogo, nombre, email, jugarEnviar);
   divLogo.append(logo);
+  divLogo1.append(logo1);
 
   //Accedemos a nuestra base de datos mediante la URL de tu app
  var ref = new Firebase("https://juego-2ede8.firebaseio.com");
