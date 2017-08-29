@@ -66,10 +66,10 @@ function contador(obj, img1) {
         obj.children().attr("src", "img/"+imagenes[Math.floor(Math.random() * imagenes.length)]);
         ubicacion(obj);
       }
-      if(t==15) {
+      if(t==10) {
       t = 0;
       };
-    },80);
+    },70);
 }
 
 const Header = () =>{
