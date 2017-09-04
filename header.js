@@ -8,7 +8,7 @@ const Registro = (update) =>{
   const logo = $('<img src="img/titulo.png">');
   const nombre = $('<input id="nombre" class="margin-bottom" type="text" placeholder="Nombre" name="" value="">');
   const email = $('<input id="email" class="margin-bottom" type="text" placeholder="Email" name="" value="">');
-  const jugarEnviar = $('<button id="btn" class="jugar" type="button" name="button">Jugar</button>');
+  const jugarEnviar = $('<button id="btn" class="jugar disabled" type="button" name="button">Jugar</button>');
   formulario.append(divLogo1, form);
   form.append(divLogo, nombre, email, jugarEnviar);
   divLogo.append(logo);
@@ -19,8 +19,52 @@ const Registro = (update) =>{
  //Hacemos referencia a nuestro nodo del sensor Temp
  var tempRef = ref.child("person");
 
+ const validateFields = () => {
+   if((/[0-9a-zA-Z._]+@[0-9a-zA-Z]+[\.]{1}[0-9a-zA-Z]+[\.]?[0-9a-zA-Z]+/.test(email.val())) && (nombre.val().length != 0) ) {
+     jugarEnviar.prop('disabled', false);
+     jugarEnviar.focus();
+   } else {
+     jugarEnviar.prop('disabled', true);
+
+    //  $("#spanText").attr("css", { backgroundColor: "gray" });
+   }
+ }
+ nombre.on('keypress', (event) => {
+   const charCode = event.keyCode;
+   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8 || charCode == 32) {
+     return true;
+   } else {
+     return false;
+   }
+ });
+
+ nombre.on('keyup', (e) => {
+   validateFields();
+ });
+
+ email.on('keyup', (e) => {
+   validateFields();
+   if( jugarEnviar.prop('disabled') == 'true')
+   {
+      $("#btn").attr("css",{backgroundColor: "green"} );
+   }
+ });
+
+
+ $(_ => {
+ if (nombre.val()=="" & email.val()=="") {
+   $('#btn').attr("disabled", true);
+ }
+});
 
   jugarEnviar.on('click', function(){
+    if (nombre.val()=="" & email.val()=="") {
+      $('#btn').attr("disabled", true);
+
+    }else{
+      $('#btn').attr("disabled", false);
+    }
+
     state.page=1;
     console.log(state.page);
     const inputnombre = nombre.val();
@@ -66,7 +110,7 @@ function contador(obj, img1) {
         obj.children().attr("src", "img/"+imagenes[Math.floor(Math.random() * imagenes.length)]);
         ubicacion(obj);
       }
-      if(t==10) {
+      if(t==8) {
       t = 0;
       };
     },70);
