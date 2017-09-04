@@ -46,16 +46,23 @@ border-radius: 5px;
 input{
   text-indent: 10px;
 }
-
+.activar{
+  background-color: #2d802e;
+  border: transparent;
+}
 #btn{
 color: white;
 font-size: 18px;
 font-weight: bold;
 letter-spacing: 3px;
-background-color: #2d802e;
+background-color: green;
 cursor: pointer;
 border: transparent;
 }
+#btn:disabled {
+    background-color: gray !important;
+}
+
 .rand {
   width: 80px;
   height: 80px;
